@@ -11,15 +11,13 @@ def dictionary
 end
 
 def word_substituter(string)
-  words = string.split
-  keys = dictionary.keys
-
-  words.each do |word|
-    if word == keys
-      words << keys
+  words.split.collect do |word|
+  if dictionary.keys.include?(word.downcase)
+    word = dictionary[word.downcase]
+  else
+    word
     end
-  end
-  words.join(" ")
+  end.join(" ")
 end
 
 def bulk_tweet_shortener(array)
